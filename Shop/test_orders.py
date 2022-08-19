@@ -20,10 +20,10 @@ class TestLogShop:
         driver.implicitly_wait(10)
         driver.find_element(By.ID, 'password').send_keys('testeroprogramowania')
         driver.find_element(By.XPATH, "//input[@name='login']").click()
-        driver.find_element(By.XPATH, '//*[@id="menu-item-123"]/a').click()
-        select = Select(driver.find_element(By.ID, 'menu-item-127'))
-        select.select_by_value('Trends')
-                              
+        source = driver.find_element(By.CLASS_NAME, 'dropdown-toggle')
+        target = driver.find_element(By.ID, 'menu-item-127')
+        webdriver.ActionChains(driver).move_to_element(source).move_to_element(target).click().perform()
+                                            
     @classmethod
     def down(self):
         self.driver.quit()          
