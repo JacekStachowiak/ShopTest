@@ -1,3 +1,4 @@
+from multiprocessing.context import assert_spawning
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -20,9 +21,23 @@ class TestLogShop:
         driver.implicitly_wait(10)
         driver.find_element(By.ID, 'password').send_keys('testeroprogramowania')
         driver.find_element(By.XPATH, "//input[@name='login']").click()
+        driver.save_screenshot('zrzut_1.png')
         source = driver.find_element(By.CLASS_NAME, 'dropdown-toggle')
+        source.screenshot('zrzut_3.png')
         target = driver.find_element(By.ID, 'menu-item-127')
         webdriver.ActionChains(driver).move_to_element(source).move_to_element(target).click().perform()
+        time.sleep(2)
+        #zdjecie = driver.find_element(By.XPATH, '//*[@id="page"]/div/div/div[2]/div/ul/li[4]/a[1]/img').click()
+        zdjecie = driver.find_element(By.XPATH, '//*[@id="page"]/div/div/div[2]/div/ul/li[4]/a[1]/img')
+        zdjecie.screenshot('zrzut_4.png')
+        zdjecie.click()
+        
+        
+        
+  
+        
+    
+     
                                             
     @classmethod
     def down(self):
