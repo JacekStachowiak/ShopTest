@@ -1,11 +1,8 @@
-from multiprocessing.context import assert_spawning
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.select import Select
 import time
-
 class TestLogShop:
     
     @classmethod
@@ -31,14 +28,18 @@ class TestLogShop:
         zdjecie = driver.find_element(By.XPATH, '//*[@id="page"]/div/div/div[2]/div/ul/li[4]/a[1]/img')
         zdjecie.screenshot('zrzut_4.png')
         zdjecie.click()
+        time.sleep(2)
+        zoom = driver.find_element(By.CLASS_NAME, 'woocommerce-product-gallery__trigger')
+        webdriver.ActionChains(driver).move_to_element(zoom).click().perform()
+        time.sleep(2)
+        webdriver.ActionChains(driver).move_to_element(zoom).key_down(Keys.ESCAPE).perform()
+        driver.find_element(By.LINK_TEXT, 'Trends').click()
+        time.sleep(5)
+        driver.find_element(By.XPATH, '//*[@id="page"]/div/div/div[2]/div/ul/li[4]/a[2]').click()
+        time.sleep(5)
+        driver.find_element(By.CLASS_NAME, 'top-cart').click()
         
         
-        
-  
-        
-    
-     
-                                            
     @classmethod
     def down(self):
         self.driver.quit()          
