@@ -11,9 +11,6 @@ import time
 start = timeit.default_timer()
 options = Options()
 options.headless = True
-#chrome_options.add_argument('--headles')    # otwórz w trybie headles
-# chrome_options.add_argument('--window-size=1920x1080')  # ustawiam rozdzielczość
-
 driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 driver.get('http://skleptest.pl/')
 driver.maximize_window()
