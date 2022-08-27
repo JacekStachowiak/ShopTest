@@ -1,9 +1,9 @@
+import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from webdriver_manager.chrome import ChromeDriverManager
 import random
-import time
 
 class TestLogShop:
     
@@ -31,10 +31,10 @@ class TestLogShop:
         driver.find_element(By.ID, 'password').send_keys('testeroprogramowania')
         driver.find_element(By.XPATH, "//input[@name='login']").click()
         driver.quit()
-    
+        
     @classmethod
     def down(self):
         self.driver.quit()
             
     # assert str(email) in driver.find_element(By.XPATH, "//*[@id='post-8']/div/div/p/strong[1]").is_displayed()
-    
+

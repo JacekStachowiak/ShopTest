@@ -1,3 +1,4 @@
+import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -11,6 +12,14 @@ class TestLogShop:
         self.driver.get('http://skleptest.pl/')
         self.driver.maximize_window()
                 
+    def test_title(self):
+        driver = self.driver
+        tekst = driver.title       
+        print(tekst)
+        assert 'Generic Shop – Just another web shop' == driver.title, 'To nie ten tytuł lub go brak'
+    
+        driver.quit()
+    
     def test_order(self):
         driver = self.driver
         driver.find_element(By.XPATH, '//*[@id="page"]/header[1]/div/div/div/ul/li[3]/a').click()
@@ -36,10 +45,10 @@ class TestLogShop:
         driver.find_element(By.LINK_TEXT, 'Trends').click()
         time.sleep(5)
         driver.find_element(By.XPATH, '//*[@id="page"]/div/div/div[2]/div/ul/li[4]/a[2]').click()
-        time.sleep(5)
+        time.sleep(3)
         driver.find_element(By.CLASS_NAME, 'top-cart').click()
         
-        
+                
     @classmethod
     def down(self):
         self.driver.quit()          

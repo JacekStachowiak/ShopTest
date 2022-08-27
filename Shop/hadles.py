@@ -9,13 +9,15 @@ from webdriver_manager.chrome import ChromeDriverManager
 import time
 
 start = timeit.default_timer()
-chrome_options = Options()
-chrome_options.add_argument('--headles')    # otwórz w trybie headles
-chrome_options.add_argument('--window-size=1920x1080')  # ustawiam rozdzielczość
+options = Options()
+options.headless = True
+#chrome_options.add_argument('--headles')    # otwórz w trybie headles
+# chrome_options.add_argument('--window-size=1920x1080')  # ustawiam rozdzielczość
 
-service = Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(options=chrome_options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), options=options)
 driver.get('http://skleptest.pl/')
+driver.maximize_window()
+
 # driver.maximize_window()
              
 def test_order_2():
@@ -42,6 +44,3 @@ def test_order_2():
         
 stop = timeit.default_timer()
 print('CZas wykonania: ', stop - start)
-                                                 
-            
-              
